@@ -1,0 +1,7 @@
+# DocFX generated files
+api/
+_site/
+obj/
+log/
+docfx.json
+toc.yml
