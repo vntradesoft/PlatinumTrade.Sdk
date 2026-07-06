@@ -12,12 +12,15 @@ namespace Pt.Okx.Sdk.Strategy
     /// as well as methods to apply updates from events.
     /// </summary>
     /// <remarks>
-    /// This interface acts as the central state for a strategy, allowing it to:
+    /// This interface acts as the central runtime state owned by the host engine, allowing it to:
     /// <list type="bullet">
-    /// <item>Inspect current trading state (orders, positions, balances).</item>
-    /// <item>Respond to incoming events via <see cref="Apply"/>.</item>
-    /// <item>Be rebuilt from external snapshots (e.g., exchange sync).</item>
+    /// <item>Track current trading state (orders, positions, balances).</item>
+    /// <item>Apply incoming events via <see cref="Apply"/>.</item>
+    /// <item>Rebuild from external snapshots (e.g., exchange sync).</item>
     /// </list>
+    /// <para>
+    /// Strategies should treat this store as internal host state and avoid depending on it from tick callbacks.
+    /// </para>
     /// </remarks>
     public interface IStrategyStateStore
     {

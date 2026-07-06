@@ -1,7 +1,7 @@
 namespace Pt.Okx.Sdk.Strategy.Events
 {
     /// <summary>
-    /// Event types published to strategies.
+    /// Event types used internally by engines for dispatch.
     /// </summary>
     public enum StrategyEventType
     {
@@ -17,7 +17,10 @@ namespace Pt.Okx.Sdk.Strategy.Events
         /// <summary>Algorithmic order update event.</summary>
         AlgoOrder,
 
-        /// <summary>Kline or candle update event.</summary>
+        /// <summary>
+        /// Kline or candle close event.
+        /// Mapped to <see cref="TickPhase.BarClose"/> when invoking <c>OnTickAsync</c>.
+        /// </summary>
         Kline,
 
         /// <summary>Transaction update event.</summary>
@@ -26,7 +29,10 @@ namespace Pt.Okx.Sdk.Strategy.Events
         /// <summary>Trade command event from Telegram or another external source.</summary>
         TradeCommand,
 
-        /// <summary>Tick update event.</summary>
+        /// <summary>
+        /// Intra-bar tick event.
+        /// Mapped to <see cref="TickPhase.Tick"/> when invoking <c>OnTickAsync</c>.
+        /// </summary>
         Tick
     }
 }
