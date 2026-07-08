@@ -1,4 +1,4 @@
-<h1><img src="icon.png" alt="Pt.Okx.Sdk" width="64" style="vertical-align:middle;" /> Pt.Okx.Sdk</h1>
+<h1><img src="https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/icon.png" alt="Pt.Okx.Sdk" width="64" style="vertical-align:middle;" /> Pt.Okx.Sdk</h1>
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/vntradesoft/PlatinumTrade.Sdk/publish.yml?style=for-the-badge&label=build)](https://github.com/vntradesoft/PlatinumTrade.Sdk/actions/workflows/publish.yml) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Since](https://img.shields.io/badge/since-2026-0A7E3B?style=for-the-badge)](#supported-frameworks) [![Discord](https://img.shields.io/discord/1522278590610407635?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/UBV8YnMJs)
 
@@ -34,7 +34,7 @@ All within a unified ecosystem designed for professional traders and developers.
 
 **Dashboard — Market Watch & Chart**
 
-![Dashboard](docs/images/dashboard.png)
+![Dashboard](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/dashboard.png)
 
 <table>
 <tr>
@@ -42,14 +42,14 @@ All within a unified ecosystem designed for professional traders and developers.
 
 **Live Trading**
 
-![Live Trading](docs/images/livetrade.png)
+![Live Trading](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/livetrade.png)
 
 </td>
 <td width="50%">
 
 **Backtest — Chart & Balance**
 
-![Backtest Chart](docs/images/backtest1.png)
+![Backtest Chart](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/backtest1.png)
 
 </td>
 </tr>
@@ -57,7 +57,7 @@ All within a unified ecosystem designed for professional traders and developers.
 
 **Backtest — Metrics & Reports**
 
-![Backtest Metrics](docs/images/backtest.png)
+![Backtest Metrics](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/backtest.png)
 
 ---
 
@@ -371,3 +371,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 #### Features
 - **sdk:** Add dotnet project templates for strategy and indicator.
+
+### [0.9.0-beta.2] - 2026-07-06
+
+#### Features
+- **sdk:** Update abstractions for strategy engine, plugins, indicators, and backtest.
+
+### [0.9.0-beta.1] - 2026-07-05
+
+#### Features
+- **sdk:** Initial Beta Release.
+  - Public contract surface for plugin development.
+  - Initial `Pt.Okx.Sdk` NuGet package release.
