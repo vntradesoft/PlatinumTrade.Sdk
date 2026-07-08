@@ -1,5 +1,5 @@
 # DocFX generated files
-api/
+api/*.yml
 _site/
 obj/
 log/
