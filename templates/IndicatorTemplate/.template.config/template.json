@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "PlatinumTrade",
+    "classifications": ["PlatinumTrade", "Indicator"],
+    "name": "PlatinumTrade Indicator Template",
+    "identity": "Pt.Template.Indicator",
+    "shortName": "pt-indicator",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "sourceName": "MyIndicator"
+}

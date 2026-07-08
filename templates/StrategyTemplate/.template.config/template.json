@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "PlatinumTrade",
+    "classifications": ["PlatinumTrade", "Strategy"],
+    "name": "PlatinumTrade Strategy Template",
+    "identity": "Pt.Template.Strategy",
+    "shortName": "pt-strategy",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "sourceName": "MyStrategy"
+}
