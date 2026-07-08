@@ -367,6 +367,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Changelog
 
+### [0.9.0-beta.4] - 2026-07-08
+
+#### Features
+- **sdk:** Sync with App version.
+
 ### [0.9.0-beta.3] - 2026-07-08
 
 #### Features
