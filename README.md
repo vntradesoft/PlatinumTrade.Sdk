@@ -94,6 +94,28 @@ Add the package via the dotnet CLI:
 dotnet add package Pt.Okx.Sdk
 ```
 
+### Project Templates
+
+You can quickly scaffold a new strategy or indicator project using our official `.NET Templates`. 
+
+First, install the templates directly from the NuGet package (or from the `templates` folder if you cloned the repo):
+
+```bash
+# If installing from cloned source:
+dotnet new install ./templates/StrategyTemplate
+dotnet new install ./templates/IndicatorTemplate
+```
+
+Once installed, you can generate ready-to-run boilerplate projects:
+
+```bash
+# Create a new Strategy Plugin
+dotnet new pt-strategy -n MyTradingBot
+
+# Create a new Indicator Plugin
+dotnet new pt-indicator -n MyCustomIndicators
+```
+
 ---
 
 ## Getting Started
@@ -311,7 +333,7 @@ docfx docs/docfx.json
 The following reference implementations are available:
 
 - **Indicator Example**: Detailed code in the [examples/Pt.Examples.Indicator/](examples/Pt.Examples.Indicator) folder.
-- **Strategy Example**: TBD — link to `Pt.Examples.Strategy/` folder, or note that the strategy example lives inline above in "Getting Started".
+- **Strategy Example**: Detailed code in the [examples/Pt.Example.Stgy.UpTrend/](examples/Pt.Example.Stgy.UpTrend) folder.
 
 ---
 
@@ -340,3 +362,12 @@ Contributions, bug reports, and feature requests are welcome. Feel free to open 
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Changelog
+
+### [0.9.0-beta.3] - 2026-07-08
+
+#### Features
+- **sdk:** Add dotnet project templates for strategy and indicator.
