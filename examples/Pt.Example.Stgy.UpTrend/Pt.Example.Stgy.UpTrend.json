@@ -1,0 +1,56 @@
+{
+  "section1": {
+    "type": "string",
+    "value": "============",
+    "range": {
+      "Min": null,
+      "Max": null
+    },
+    "description": "---------- 1. Signal ----------"
+  },
+  "superTrendPeriod": {
+    "type": "int",
+    "value": 14,
+    "range": {
+      "Min": 1.0,
+      "Max": 100.0
+    },
+    "description": "SuperTrend ATR period."
+  },
+  "superTrendMultiplier": {
+    "type": "double",
+    "value": 3.0,
+    "range": {
+      "Min": 0.1,
+      "Max": 10.0
+    },
+    "description": "SuperTrend ATR multiplier."
+  },
+  "section2": {
+    "type": "string",
+    "value": "============",
+    "range": {
+      "Min": null,
+      "Max": null
+    },
+    "description": "---------- 2. Trading ----------"
+  },
+  "symbol": {
+    "type": "string",
+    "value": "",
+    "range": {
+      "Min": null,
+      "Max": null
+    },
+    "description": "Optional symbol override. Leave empty to use StrategySettings.Symbol."
+  },
+  "orderQuantity": {
+    "type": "double",
+    "value": 0.01,
+    "range": {
+      "Min": 0.0001,
+      "Max": 1000000.0
+    },
+    "description": "Market order quantity for entry."
+  }
+}

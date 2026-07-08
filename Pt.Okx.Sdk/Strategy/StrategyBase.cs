@@ -18,10 +18,10 @@ namespace Pt.Okx.Sdk.Strategy
     public abstract class StrategyBase : IStrategy
     {
         /// <inheritdoc/>
-        public abstract Task<bool> InitializeAsync(IStrategyStateStore state, CancellationToken cancellationToken);
+        public abstract Task<bool> OnInitAsync(IStrategyStateStore state, CancellationToken cancellationToken);
 
         /// <inheritdoc/>
-        public abstract Task<bool> StopAsync(CancellationToken cancellationToken);
+        public abstract Task<bool> OnStopAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Called on each market cadence update.

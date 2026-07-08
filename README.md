@@ -106,11 +106,11 @@ To create a custom strategy, implement the `IStrategy` interface and register yo
 
 ```csharp
 using Pt.Okx.Sdk.Strategy;
-using Pt.Okx.Sdk.Enums;
-using Pt.Okx.Sdk.Interfaces;
+using Pt.Okx.Sdk.Strategy.Events;
+using Pt.Okx.Sdk.Strategy.Settings;
 using Microsoft.Extensions.Options;
 
-public class SimpleMomentumStrategy : IStrategy
+public class SimpleMomentumStrategy : StrategyBase
 {
     private readonly IStrategyLogger _logger;
     private readonly IOkxClient _client;
@@ -126,24 +126,30 @@ public class SimpleMomentumStrategy : IStrategy
         _settings = settings.Value;
     }
 
-    public async Task<bool> InitializeAsync(IStrategyStateStore state, CancellationToken ct)
+    public override async Task<bool> OnInitAsync(IStrategyStateStore state, CancellationToken ct)
     {
         _logger.LogInformation("Init", "Initializing strategy for {Symbol}", _settings.Symbol);
         return true;
     }
 
-    public async Task RunAsync(StrategyEventType eventType, IStrategyStateStore state, CancellationToken ct)
+    public override async Task OnTickAsync(TickPhase tickPhase, CancellationToken ct)
     {
-        if (eventType != StrategyEventType.Kline) return;
-
-        _logger.LogInformation("Run", "Processing K-line update for {Symbol}", _settings.Symbol);
+        // tickPhase indicates whether this is an intra-bar tick or a closed bar
+        _logger.LogInformation("Tick", "Processing tick update for {Symbol}", _settings.Symbol);
         // Implement your trading logic here
     }
 
-    public Task<bool> StopAsync(CancellationToken ct)
+    public override Task<bool> OnStopAsync(CancellationToken ct)
     {
         _logger.LogWarning("Stop", "Strategy is stopping");
         return Task.FromResult(true);
+    }
+    
+    // Optional: override OnOrderAsync, OnPositionAsync, etc. to react to events
+    public override Task OnPositionAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.Position> positions, CancellationToken ct)
+    {
+        // Handle position updates
+        return Task.CompletedTask;
     }
 }
 ```

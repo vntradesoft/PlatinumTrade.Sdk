@@ -29,7 +29,7 @@ namespace Pt.Okx.Sdk.Strategy
         /// <returns>
         /// <c>true</c> if initialization succeeded; otherwise <c>false</c>.
         /// </returns>
-        Task<bool> InitializeAsync(IStrategyStateStore state, CancellationToken cancellationToken);
+        Task<bool> OnInitAsync(IStrategyStateStore state, CancellationToken cancellationToken);
 
         /// <summary>
         /// Executes strategy logic on each market tick/bar trigger.
@@ -52,6 +52,6 @@ namespace Pt.Okx.Sdk.Strategy
         /// <returns>
         /// <c>true</c> if the strategy stopped successfully; otherwise <c>false</c>.
         /// </returns>
-        Task<bool> StopAsync(CancellationToken cancellationToken);
+        Task<bool> OnStopAsync(CancellationToken cancellationToken);
     }
 }
