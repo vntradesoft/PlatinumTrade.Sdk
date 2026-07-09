@@ -1,6 +1,6 @@
 # ![Pt.Okx.Sdk](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/icon.png) Pt.Okx.Sdk
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/vntradesoft/PlatinumTrade.Sdk/publish.yml?style=for-the-badge&label=build)](https://github.com/vntradesoft/PlatinumTrade.Sdk/actions/workflows/publish.yml) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Since](https://img.shields.io/badge/since-2026-0A7E3B?style=for-the-badge)](#supported-frameworks) [![Discord](https://img.shields.io/discord/1522278590610407635?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/UBV8YnMJs)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/vntradesoft/PlatinumTrade.Sdk/publish.yml?style=for-the-badge&label=build)](https://github.com/vntradesoft/PlatinumTrade.Sdk/actions/workflows/publish.yml) [![NuGet version](https://img.shields.io/nuget/v/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk) [![NuGet downloads](https://img.shields.io/nuget/dt/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Since](https://img.shields.io/badge/since-2026-0A7E3B?style=for-the-badge)](#supported-frameworks) [![Discord](https://img.shields.io/discord/1522278590610407635?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/UBV8YnMJs)
 
 A .NET SDK providing contracts, abstractions, and common components for building algorithmic trading applications on the OKX exchange.
 
@@ -36,24 +36,13 @@ All within a unified ecosystem designed for professional traders and developers.
 
 ![Dashboard](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/dashboard.png)
 
-<table>
-<tr>
-<td width="50%">
-
 **Live Trading**
 
 ![Live Trading](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/livetrade.png)
 
-</td>
-<td width="50%">
-
 **Backtest — Chart & Balance**
 
 ![Backtest Chart](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/docs/images/backtest1.png)
-
-</td>
-</tr>
-</table>
 
 **Backtest — Metrics & Reports**
 
@@ -86,7 +75,7 @@ All within a unified ecosystem designed for professional traders and developers.
 
 ## Installation
 
-[![NuGet version](https://img.shields.io/nuget/v/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk) [![NuGet downloads](https://img.shields.io/nuget/dt/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk)
+
 
 Add the package via the dotnet CLI:
 
@@ -304,7 +293,23 @@ public class MyIndicatorPlugin : IIndicatorPlugin
             ]);
     }
 }
-```
+---
+
+### 4. Running Your Plugins in Platinum Trade App
+
+After successfully compiling your project, you will get a `.dll` assembly file in your project's output folder (e.g., `bin/Debug/net8.0/MyPlugin.dll`).
+
+To load it into the **Platinum Trade App** GUI:
+
+- **Indicators**:
+  1. In the app main menu, navigate to **Tools > Indicator Plugin Manager**.
+  2. Click the **Load Plugin** button.
+  3. Choose your compiled indicator plugin `.dll` file to load and activate it.
+- **Strategies**:
+  1. Open a **Strategy Workspace** tab in the main interface.
+  2. On the **Settings** tab, locate the **Strategy File** field.
+  3. Click the browse (**`...`**) button and select your compiled strategy plugin `.dll` file.
+  4. Customize the parameters under the **Input Parameters** tab, configure the target symbol/account, and click **Start Trading** (or **Start Backtest**).
 
 ---
 
@@ -366,6 +371,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 ## Changelog
+
+### [0.9.3-beta.2] - 2026-07-08
+
+#### Features
+- **sdk:** Sync with App version and upgrade JK.OKX.Net to 5.0.2 (Breaking Change).
 
 ### [0.9.0-beta.4] - 2026-07-08
 
