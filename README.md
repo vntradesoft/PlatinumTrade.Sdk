@@ -1,7 +1,5 @@
 # ![Pt.Okx.Sdk](https://raw.githubusercontent.com/vntradesoft/PlatinumTrade.Sdk/main/icon.png) Pt.Okx.Sdk
 
-**English** | [Vietnamese](README.vi.md)
-
 [![Build Status](https://img.shields.io/github/actions/workflow/status/vntradesoft/PlatinumTrade.Sdk/publish.yml?style=for-the-badge&label=build)](https://github.com/vntradesoft/PlatinumTrade.Sdk/actions/workflows/publish.yml) [![NuGet version](https://img.shields.io/nuget/v/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk) [![NuGet downloads](https://img.shields.io/nuget/dt/Pt.Okx.Sdk.svg?style=for-the-badge)](https://www.nuget.org/packages/Pt.Okx.Sdk) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Since](https://img.shields.io/badge/since-2026-0A7E3B?style=for-the-badge)](#supported-frameworks) [![Discord](https://img.shields.io/discord/1522278590610407635?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/UBV8YnMJs)
 
 A .NET SDK providing contracts, abstractions, and common components for building algorithmic trading applications on the OKX exchange.
