@@ -63,19 +63,17 @@ All within a unified ecosystem designed for professional traders and developers.
 
 ## Supported Frameworks
 
-| .NET implementation | Version | Support |
-| --- | --- | --- |
-| .NET | 8.0 | Supported |
-| .NET | 9.0 | Supported |
-| .NET | 10.0 | Supported |
+| .NET implementation | Version | Support   |
+| ------------------- | ------- | --------- |
+| .NET                | 8.0     | Supported |
+| .NET                | 9.0     | Supported |
+| .NET                | 10.0    | Supported |
 
 > Current package targets are `net8.0;net9.0;net10.0`.
 
 ---
 
 ## Installation
-
-
 
 Add the package via the dotnet CLI:
 
@@ -85,7 +83,7 @@ dotnet add package Pt.Okx.Sdk
 
 ### Project Templates
 
-You can quickly scaffold a new strategy or indicator project using our official `.NET Templates`. 
+You can quickly scaffold a new strategy or indicator project using our official `.NET Templates`.
 
 First, install the templates directly from the NuGet package (or from the `templates` folder if you cloned the repo):
 
@@ -155,7 +153,7 @@ public class SimpleMomentumStrategy : StrategyBase
         _logger.LogWarning("Stop", "Strategy is stopping");
         return Task.FromResult(true);
     }
-    
+
     // Optional: override OnOrderAsync, OnPositionAsync, etc. to react to events
     public override Task OnPositionAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.Position> positions, CancellationToken ct)
     {
@@ -293,6 +291,8 @@ public class MyIndicatorPlugin : IIndicatorPlugin
             ]);
     }
 }
+```
+
 ---
 
 ### 4. Running Your Plugins in Platinum Trade App
@@ -319,6 +319,9 @@ Full documentation:
 https://vntradesoft.github.io/PlatinumTrade.Docs/
 
 API Reference:
+https://vntradesoft.github.io/PlatinumTrade.Docs/docs/sdk/api-reference
+
+API Reference Auto Gen DocFX:
 https://vntradesoft.github.io/PlatinumTrade.Docs/sdk/api/index.html
 
 <details>
@@ -375,26 +378,31 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ### [0.9.3-beta.2] - 2026-07-08
 
 #### Features
+
 - **sdk:** Sync with App version and upgrade JK.OKX.Net to 5.0.2 (Breaking Change).
 
 ### [0.9.0-beta.4] - 2026-07-08
 
 #### Features
+
 - **sdk:** Sync with App version.
 
 ### [0.9.0-beta.3] - 2026-07-08
 
 #### Features
+
 - **sdk:** Add dotnet project templates for strategy and indicator.
 
 ### [0.9.0-beta.2] - 2026-07-06
 
 #### Features
+
 - **sdk:** Update abstractions for strategy engine, plugins, indicators, and backtest.
 
 ### [0.9.0-beta.1] - 2026-07-05
 
 #### Features
+
 - **sdk:** Initial Beta Release.
   - Public contract surface for plugin development.
   - Initial `Pt.Okx.Sdk` NuGet package release.
