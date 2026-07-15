@@ -40,7 +40,7 @@ namespace Pt.Okx.Sdk.Strategy
         IReadOnlyList<Position> Positions { get; }
 
         /// <summary>
-        /// Gets the account balances.
+        /// Gets the account balances for asset USDT.
         /// </summary>
         IReadOnlyList<AccountBalance> Balances { get; }
 

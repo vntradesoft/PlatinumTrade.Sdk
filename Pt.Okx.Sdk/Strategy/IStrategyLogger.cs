@@ -152,14 +152,14 @@ namespace Pt.Okx.Sdk.Strategy
         /// <param name="title">The log entry title.</param>
         /// <param name="detailsTemplate">The message template (optional).</param>
         /// <param name="detailsArgs">Arguments for the message template.</param>
-        void LogError(Exception ex, string title, string? detailsTemplate = null, params object?[] detailsArgs);
+        void LogError(Exception? ex, string title, string? detailsTemplate = null, params object?[] detailsArgs);
 
         /// <summary>Logs a critical error with an exception.</summary>
         /// <param name="ex">The exception to log.</param>
         /// <param name="title">The log entry title.</param>
         /// <param name="detailsTemplate">The message template (optional).</param>
         /// <param name="detailsArgs">Arguments for the message template.</param>
-        void LogCritical(Exception ex, string title, string? detailsTemplate = null, params object?[] detailsArgs);
+        void LogCritical(Exception? ex, string title, string? detailsTemplate = null, params object?[] detailsArgs);
 
         /// <summary>Logs a message to the console at a specific log level.</summary>
         /// <param name="level">The log level.</param>

@@ -4,33 +4,44 @@ using Pt.Okx.Sdk.Enums;
 
 namespace Pt.Okx.Sdk.Clients.Instruments
 {
+
     /// <summary>
-    /// Interface for instrument clients, providing methods to query trading instrument information.
+    /// Provides access to perpetual swap instrument information,
+    /// market data, trading rules, margin requirements,
+    /// and symbol metadata.
+    ///
+    /// Currently, only OKX perpetual swap instruments are supported.
     /// </summary>
     public interface IInstrumentClient
     {
         #region Basic Info and Properties
 
+
         /// <summary>
-        /// Gets the type of trading instrument handled by this client (e.g., Futures, Spot).
+        /// Gets the instrument type handled by this client.
+        /// Currently returns <see cref="InstrumentType.Swap"/>.
         /// </summary>
         InstrumentType InstrumentType { get; }
 
         /// <summary>
-        /// Checks if the specified symbol is a valid and tracked trading symbol.
+        /// Determines whether the specified symbol is supported.
         /// </summary>
-        /// <param name="symbol">The trading symbol to check.</param>
-        /// <returns>True if the symbol is valid and tracked; otherwise, false.</returns>
+        /// <param name="symbol">The trading symbol.</param>
+        /// <returns>
+        /// True if the symbol is supported; otherwise, false.
+        /// </returns>
         bool IsSymbol(string symbol);
 
         /// <summary>
-        /// Gets the total number of trading symbols currently tracked.
+        /// Gets the total number of perpetual swap symbols supported by the current trading environment.
         /// </summary>
-        /// <returns>The total count of tracked symbols.</returns>
+        /// <returns>
+        /// The total count of available perpetual swap symbols.
+        /// </returns>
         int TotalSymbols();
 
         /// <summary>
-        /// Gets the quote asset for the specified symbol (e.g., "USDT").
+        /// Gets the quote asset for the specified perpetual swap symbol (e.g., "USDT").
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <returns>The quote asset string.</returns>
@@ -44,7 +55,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         string BaseAsset(string symbol);
 
         /// <summary>
-        /// Gets the underlying asset for the specified symbol (for derivatives).
+        /// Gets the underlying asset for the specified perpetual swap symbol.
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <returns>The underlying asset string.</returns>
@@ -59,15 +70,15 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The last price wrapped in a WebCallResult.</returns>
+        /// <returns>The last price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetLastPriceAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
-        /// Gets the mark price for the specified symbol (important for Futures/Swap).
+        /// Gets the mark price for the specified perpetual swap symbol.
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The mark price wrapped in a WebCallResult.</returns>
+        /// <returns>The mark price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetMarkPriceAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -75,7 +86,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The bid price wrapped in a WebCallResult.</returns>
+        /// <returns>The bid price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetBidAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -83,7 +94,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The ask price wrapped in a WebCallResult.</returns>
+        /// <returns>The ask price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetAskAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -91,7 +102,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The spread value wrapped in a WebCallResult.</returns>
+        /// <returns>The spread value wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetSpreadAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -99,7 +110,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>A tuple containing bid, ask, and spread values wrapped in a WebCallResult.</returns>
+        /// <returns>A tuple containing bid, ask, and spread values wrapped in a HttpResult.</returns>
         Task<ApiResult<(decimal Bid, decimal Ask, decimal Spread)>> GetBidAskSpreadAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -107,7 +118,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The high price wrapped in a WebCallResult.</returns>
+        /// <returns>The high price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetHighPriceAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -115,7 +126,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The low price wrapped in a WebCallResult.</returns>
+        /// <returns>The low price wrapped in a HttpResult.</returns>
         Task<ApiResult<decimal>> GetLowPriceAsync(string symbol, CancellationToken ct = default);
 
         /// <summary>
@@ -123,7 +134,7 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <param name="ct">Cancellation token.</param>
-        /// <returns>The limit price wrapped in a WebCallResult.</returns>
+        /// <returns>The limit price wrapped in a HttpResult.</returns>
         Task<ApiResult<LimitPrice>> GetLimitPriceAsync(string symbol, CancellationToken ct = default);
 
         #endregion
@@ -214,14 +225,14 @@ namespace Pt.Okx.Sdk.Clients.Instruments
         Task<decimal> GetMaintMarginRateAsync(string symbol, decimal positionNotional, CancellationToken ct = default);
 
         /// <summary>
-        /// Gets the contract size for the specified symbol (for Futures/Swap).
+        /// Gets the contract size for the specified perpetual swap symbol.
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <returns>The contract size value.</returns>
         decimal ContractSize(string symbol);
 
         /// <summary>
-        /// Gets the contract multiplier for the specified symbol (for Options).
+        /// Gets the contract multiplier for the specified perpetual swap symbol.
         /// </summary>
         /// <param name="symbol">The trading symbol.</param>
         /// <returns>The contract multiplier value.</returns>

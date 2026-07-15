@@ -163,7 +163,20 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
             if (string.IsNullOrEmpty(value))
                 return value;
 
-            return char.ToLowerInvariant(value[0]) + value[1..];
+            // Count consecutive leading uppercase chars
+            int upper = 0;
+            while (upper < value.Length && char.IsUpper(value[upper])) upper++;
+
+            if (upper == 0) return value;
+            if (upper == 1) return char.ToLowerInvariant(value[0]) + value[1..];
+
+            // For acronyms like RRLevels → rrLevels: lowercase all but last uppercase
+            // when last uppercase is followed by a lowercase (start of next word).
+            // If all chars are uppercase (e.g. URL), lowercase everything.
+            int toLower = upper < value.Length ? upper - 1 : upper;
+            var chars = value.ToCharArray();
+            for (int i = 0; i < toLower; i++) chars[i] = char.ToLowerInvariant(chars[i]);
+            return new string(chars);
         }
     }
 
@@ -427,7 +440,20 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
             if (string.IsNullOrEmpty(value))
                 return value;
 
-            return char.ToLowerInvariant(value[0]) + value[1..];
+            // Count consecutive leading uppercase chars
+            int upper = 0;
+            while (upper < value.Length && char.IsUpper(value[upper])) upper++;
+
+            if (upper == 0) return value;
+            if (upper == 1) return char.ToLowerInvariant(value[0]) + value[1..];
+
+            // For acronyms like RRLevels → rrLevels: lowercase all but last uppercase
+            // when last uppercase is followed by a lowercase (start of next word).
+            // If all chars are uppercase (e.g. URL), lowercase everything.
+            int toLower = upper < value.Length ? upper - 1 : upper;
+            var chars = value.ToCharArray();
+            for (int i = 0; i < toLower; i++) chars[i] = char.ToLowerInvariant(chars[i]);
+            return new string(chars);
         }
 
         private sealed record SchemaEntry(string Key, PropertyInfo Property, InputParamAttribute? Attribute, object? DefaultValue);

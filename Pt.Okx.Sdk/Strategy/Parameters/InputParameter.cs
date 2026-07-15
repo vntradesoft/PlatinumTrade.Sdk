@@ -134,7 +134,7 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
             {
                 doubleValue = d;
             }
-            else if(value is IConvertible)
+            else if (value is IConvertible)
             {
                 try
                 {
@@ -211,10 +211,11 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
             {
                 errorMessage = "Value cannot be null";
                 return false;
-            };
+            }
+            ;
 
             int intValue;
-            if(value is int i)
+            if (value is int i)
             {
                 intValue = i;
             }
@@ -678,7 +679,7 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
                     Value = Convert.ToBoolean(value);
                     return;
                 }
-                catch (InvalidOperationException ) 
+                catch (InvalidOperationException)
                 {
                     // ignore, fall through
                 }

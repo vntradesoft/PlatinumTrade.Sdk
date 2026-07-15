@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Options;
-using Pt.Okx.Sdk.Clients.Trading;
 using Pt.Okx.Sdk.Strategy.Events;
 using Pt.Okx.Sdk.Strategy.Settings;
 
@@ -82,7 +81,7 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
             multiplier: _input.SuperTrendMultiplier,
             indicatorAlias: SuperTrendAlias);
 
-        var magicResult = _client.Trade.SetMagicNumber("exup");
+        var magicResult = _client.Trade.SetOrderSourceIdPrefix("exup");
         if (!magicResult.Success)
         {
             _logger.LogWarning("Init", "SetMagicNumber failed: {0}", magicResult.ErrorMsg);
@@ -105,7 +104,7 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
         _ = tickPhase;
 
         // Evaluate strategy exactly once per closed candle of the configured timeframe.
-        var closedCandle = await _client.Timeseries.GetOHCLVAsync(SymbolCurrent, SignalTimeframe, shift: 0, ct: ct);
+        var closedCandle = await _client.Timeseries.GetOHLCVAsync(SymbolCurrent, SignalTimeframe, shift: 0, ct: ct);
         if (closedCandle.IsEmpty || closedCandle.Timestamp == _lastEvaluatedClosedBarTime)
         {
             return;

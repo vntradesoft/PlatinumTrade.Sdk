@@ -14,7 +14,7 @@ namespace Pt.Okx.Sdk.Strategy.Events
     public record OrderEvent(IReadOnlyList<Order> Data)
         : StrategyEvent(StrategyEventType.Order);
 
-    /// <summary>Represents a balance update event.</summary>
+    /// <summary>Represents a balance update event for asset USDT.</summary>
     public record BalanceEvent(IReadOnlyList<AccountBalance> Data)
         : StrategyEvent(StrategyEventType.Balance);
 

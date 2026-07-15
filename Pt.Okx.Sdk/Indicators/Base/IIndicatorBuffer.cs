@@ -188,6 +188,12 @@ namespace Pt.Okx.Sdk.Indicators.Base
         int CountUpToCurrent();
 
         /// <summary>
+        /// Returns the number of bars that have been calculated up to CurrentTime.
+        /// This counts processed bar slots (including slots marked empty) for indicator progress tracking.
+        /// </summary>
+        int GetCalculatedBarCount();
+
+        /// <summary>
         /// Checks if the buffer has data at or before CurrentTime.
         /// Used to guard before querying.
         /// </summary>

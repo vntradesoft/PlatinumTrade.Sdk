@@ -51,7 +51,7 @@ namespace Pt.Okx.Sdk.Strategy
         public virtual Task OnTransactionAsync(IReadOnlyList<Transaction> transactions, CancellationToken ct) => Task.CompletedTask;
 
         /// <summary>
-        /// Called when balance updates arrive.
+        /// Called when balance updates arrive for asset USDT.
         /// </summary>
         public virtual Task OnBalanceAsync(IReadOnlyList<AccountBalance> balances, CancellationToken ct) => Task.CompletedTask;
 

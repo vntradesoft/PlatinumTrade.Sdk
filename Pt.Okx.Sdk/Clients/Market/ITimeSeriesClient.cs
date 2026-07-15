@@ -21,19 +21,23 @@ namespace Pt.Okx.Sdk.Clients.Market
         Timeframe PeriodCurrent { get; }
 
         /// <summary>
-        /// Gets the start time of the data in the system.
+        /// Gets the timestamp where the warmup period begins.
         /// </summary>
         DateTime BeginTime { get; }
 
         /// <summary>
-        /// Gets the end time of the data (null if running in real-time).
-        /// </summary>
-        DateTime? EndTime { get; }
-
-        /// <summary>
-        /// Gets the system start time.
+        /// Gets the timestamp when the strategy starts processing live or simulated data.
         /// </summary>
         DateTime? StartTime { get; }
+
+
+        /// <summary>
+        /// Gets the timestamp when the session ends.
+        /// </summary>
+        /// <remarks>
+        /// Returns <c>null</c> when running in real-time mode.
+        /// </remarks>
+        DateTime? EndTime { get; }
 
         /// <summary>
         /// Gets the maximum number of bars (candles) stored in the cache.
@@ -50,12 +54,14 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// (primary pair + indicator pairs). Not the global singleton.
         /// </summary>
         HashSet<(string Symbol, Timeframe Timeframe)> SymbolsTimes { get; }
+
         /// <summary>
         /// Gets the most recent tick price of the asset as received from the market data feed.
         /// </summary>
         decimal CurrentTickPrice { get; }
+
         /// <summary>
-        /// Gets the most recent tick data representing the current state of the system.
+        /// Gets the most recent tick data received from the market data feed.
         /// </summary>
         TickData CurrentTick { get; }
 
@@ -67,9 +73,10 @@ namespace Pt.Okx.Sdk.Clients.Market
         DateTime GetCurrentTime(Timeframe timeframe = Timeframe.OneMinute);
 
         /// <summary>
-        /// Counts the number of bars calculated for a specific indicator.
+        /// Gets the number of bars calculated for the specified indicator.
         /// </summary>
         /// <param name="indicatorId">The unique ID of the indicator.</param>
+        /// <exception cref="ArgumentException">Thrown if the indicator ID is not found.</exception>
         /// <returns>The number of bars calculated.</returns>
         int BarsCalculated(string indicatorId);
 
@@ -93,7 +100,7 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// <param name="shift">The candle index to retrieve.</param>
         /// <param name="ct">The cancellation token.</param>
         /// <returns>The corresponding candle data.</returns>
-        Task<CandleData> GetOHCLVAsync(string? symbol = null, Timeframe? timeframe = null, int shift = 0, CancellationToken ct = default);
+        Task<CandleData> GetOHLCVAsync(string? symbol = null, Timeframe? timeframe = null, int shift = 0, CancellationToken ct = default);
 
         /// <summary>
         /// Gets the data for the currently forming candle.
@@ -103,7 +110,7 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// <param name="ct">The cancellation token.</param>
         /// <returns>The current candle data.</returns>
         /// <remarks>Parameters <c>symbol</c> and <c>timeframe</c> are optional and default to the current settings if not provided.</remarks>
-        Task<CandleData> GetCurrentCandleAsync(string? symbol = null, Timeframe? timeframe = null, CancellationToken ct = default);
+        Task<CandleData> GetLastCloseCandleAsync(string? symbol = null, Timeframe? timeframe = null, CancellationToken ct = default);
 
         /// <summary>
         /// Gets the timestamp of the candle at the specified shift for a given timeframe. Shift 0 corresponds to the current forming candle, shift 1 is the last closed candle, and so on.
@@ -394,17 +401,17 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// Extracts a list of prices from an existing OHLCV data series.
         /// </summary>
         /// <param name="appliedPrice">The type of price to extract (e.g., close, open, high, low).</param>
-        /// <param name="ohclvs">The OHLCV data series.</param>
+        /// <param name="ohlcvs">The OHLCV data series.</param>
         /// <returns>An enumerable of price values extracted from the OHLCV series.</returns>
         /// <remarks>Parameters <c>symbol</c> and <c>timeframe</c> are optional and default to the current settings if not provided, if applicable.</remarks>
-        IEnumerable<decimal> CopyPrices(AppliedPrice appliedPrice, IEnumerable<CandleData> ohclvs);
+        IEnumerable<decimal> CopyPrices(AppliedPrice appliedPrice, IEnumerable<CandleData> ohlcvs);
         /// <summary>
         /// Extracts a specific price value from a candle based on AppliedPrice.
         /// </summary>
         /// <param name="appliedPrice">The type of price to extract (e.g., close, open, high, low).</param>
-        /// <param name="ohclv">The candle data to extract the price from.</param>
+        /// <param name="ohlcv">The candle data to extract the price from.</param>
         /// <returns>The extracted price value from the candle.</returns>
-        decimal CopyPrice(AppliedPrice appliedPrice, CandleData ohclv);
+        decimal CopyPrice(AppliedPrice appliedPrice, CandleData ohlcv);
 
         #endregion
 
