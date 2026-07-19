@@ -78,5 +78,10 @@ namespace Pt.Okx.Sdk.Indicators.Services
         /// </summary>
         /// <param name="uniqueId">The unique identifier of the indicator to unregister.</param>
         void UnregisterIndicator(string uniqueId);
+
+        /// <summary>
+        /// Clears all registered indicators.
+        /// </summary>
+        void ClearAllIndicators();
     }
 }

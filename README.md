@@ -19,7 +19,7 @@ Stop worrying about exchange APIs.
 Pt.Okx.Sdk provides a trading-focused development experience where developers can
 concentrate on what matters most: strategies, indicators, and execution logic.
 
-Inspired by the simplicity of MQL5 and modern trading platforms, the SDK abstracts
+Inspired by modern trading platforms, the SDK abstracts
 exchange-specific complexities behind a clean and consistent programming model.
 
 Together with PlatinumApp, users can seamlessly move from idea to execution:
