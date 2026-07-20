@@ -11,6 +11,19 @@ public interface IIndicatorAD : IIndicator, IIndicatorMethodCommon
 }
 
 /// <summary>
+/// Defines the contract for a Volumes indicator.
+/// </summary>
+public interface IIndicatorVolumes : IIndicator, IIndicatorMethodCommon
+{
+    /// <summary>
+    /// Gets the volume value at the specified index.
+    /// </summary>
+    /// <param name="index">The zero-based index of the value to retrieve. Default is 0.</param>
+    /// <returns>The volume value.</returns>
+    IndicatorValue FindVolume(int index = 0);
+}
+
+/// <summary>
 /// Defines the contract for an On-Balance Volume (OBV) indicator.
 /// </summary>
 public interface IIndicatorOBV : IIndicator, IIndicatorMethodCommon

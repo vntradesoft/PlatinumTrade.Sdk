@@ -731,6 +731,17 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// <param name="propertyOptions">Optional property configuration.</param>
         /// <returns>The created VWAP indicator instance.</returns>
         IIndicatorVWAP CreateIndicatorVWAP(string? symbol = null, Timeframe? timeframe = null, bool? resetDaily = null, string? indicatorAlias = null, Action<IndicatorProperty>? propertyOptions = null);
+
+        /// <summary>
+        /// Creates a Volumes indicator that renders raw volume as a histogram.
+        /// </summary>
+        /// <param name="symbol">The trading symbol (optional).</param>
+        /// <param name="timeframe">The timeframe for the indicator (optional).</param>
+        /// <param name="indicatorAlias">An alias for the indicator instance (optional).</param>
+        /// <param name="propertyOptions">Optional action to configure indicator properties.</param>
+        /// <returns>The created Volumes indicator instance.</returns>
+        IIndicatorVolumes CreateIndicatorVolumes(string? symbol = null, Timeframe? timeframe = null, string? indicatorAlias = null, Action<IndicatorProperty>? propertyOptions = null);
+
         /// <summary>
         /// Creates a Volume Spike indicator for detecting volume surges.
         /// </summary>
