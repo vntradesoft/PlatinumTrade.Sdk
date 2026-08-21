@@ -44,6 +44,27 @@ namespace Pt.Okx.Sdk.Indicators.Models
 
         /// <summary>Gets or sets the fill transparency (0 = fully transparent, 255 = fully opaque). Default is 72.</summary>
         public byte Opacity { get; set; } = 72;
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorFillRegion"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorFillRegion"/> instance with cloned properties.</returns>
+        public IndicatorFillRegion DeepCopy()
+        {
+            return new IndicatorFillRegion
+            {
+                Name = Name,
+                Enabled = Enabled,
+                Visible = Visible,
+                UpperBufferIndex = UpperBufferIndex,
+                LowerBufferIndex = LowerBufferIndex,
+                ColorMode = ColorMode,
+                FillColor = FillColor,
+                BullishColor = BullishColor,
+                BearishColor = BearishColor,
+                Opacity = Opacity
+            };
+        }
     }
 
     /// <summary>
@@ -182,6 +203,49 @@ namespace Pt.Okx.Sdk.Indicators.Models
             _fillRegions.AddRange(regions);
         }
 
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorSpecialFeatures"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorSpecialFeatures"/> instance with cloned properties and fill regions.</returns>
+        public IndicatorSpecialFeatures DeepCopy()
+        {
+            var copy = new IndicatorSpecialFeatures
+            {
+                UseRangeValue = UseRangeValue,
+                MinValue = MinValue,
+                MaxValue = MaxValue,
+                ShowUpperBound = ShowUpperBound,
+                ShowLowerBound = ShowLowerBound,
+                ShowCenterLine = ShowCenterLine,
+                UpperBoundValue = UpperBoundValue,
+                UpperBoundWidth = UpperBoundWidth,
+                LowerBoundValue = LowerBoundValue,
+                LowerBoundWidth = LowerBoundWidth,
+                CenterLineValue = CenterLineValue,
+                CenterLineWidth = CenterLineWidth,
+                UpperBoundColor = UpperBoundColor,
+                LowerBoundColor = LowerBoundColor,
+                CenterLineColor = CenterLineColor,
+                BoundLineStyle = BoundLineStyle,
+                ShowBoundFill = ShowBoundFill,
+                BoundFillColor = BoundFillColor,
+                BoundFillOpacity = BoundFillOpacity,
+                ShowHistogram = ShowHistogram,
+                HistogramPositiveColor = HistogramPositiveColor,
+                HistogramNegativeColor = HistogramNegativeColor,
+                ShowZeroLine = ShowZeroLine,
+                ZeroLineWidth = ZeroLineWidth,
+                ZeroLineColor = ZeroLineColor
+            };
+
+            if (_fillRegions.Count > 0)
+            {
+                copy.SetFillRegions(_fillRegions.Select(r => r.DeepCopy()));
+            }
+
+            return copy;
+        }
+
     }
 
     /// <summary>
@@ -247,6 +311,35 @@ namespace Pt.Okx.Sdk.Indicators.Models
         public IDictionary<int, IndicatorColor> ColorPalette { get; set; }
             = new Dictionary<int, IndicatorColor>();
 #pragma warning restore CA2227
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorLabel"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorLabel"/> instance with cloned properties and color palette.</returns>
+        public IndicatorLabel DeepCopy()
+        {
+            var copy = new IndicatorLabel
+            {
+                Label = Label,
+                Type = Type,
+                Color = Color,
+                Style = Style,
+                Width = Width,
+                Visible = Visible,
+                Digit = Digit,
+                ColorIndexBuffer = ColorIndexBuffer
+            };
+
+            if (ColorPalette != null)
+            {
+                foreach (var kvp in ColorPalette)
+                {
+                    copy.ColorPalette[kvp.Key] = kvp.Value;
+                }
+            }
+
+            return copy;
+        }
     }
 
     /// <summary>
@@ -276,7 +369,7 @@ namespace Pt.Okx.Sdk.Indicators.Models
         /// <see cref="IndicatorWindow.Main"/> renders over the price bars;
         /// <see cref="IndicatorWindow.Separate"/> renders in its own panel below the chart.
         /// </summary>
-        public IndicatorWindow Window { get; private set; } = IndicatorWindow.Main;
+        public IndicatorWindow Window { get; set; } = IndicatorWindow.Main;
 
         /// <summary>
         /// Gets the total number of buffers allocated for this indicator, including
@@ -306,6 +399,20 @@ namespace Pt.Okx.Sdk.Indicators.Models
         public TimeFrameOptions VisibleTimeframes { get; set; } = TimeFrameOptions.AllPeriods;
 
         /// <summary>
+        /// Gets or sets the calculation mode (Stateless, Stateful, or Cumulative) for this indicator.
+        /// Controls memory management, calculation strategy, and historical data loading policies.
+        /// Default is <see cref="IndicatorCalculationMode.Stateless"/>.
+        /// </summary>
+        public IndicatorCalculationMode CalculationMode { get; set; } = IndicatorCalculationMode.Stateless;
+
+        /// <summary>
+        /// Gets or sets the minimum number of historical bars required for warm-up calculation before the visible viewport.
+        /// Stateful or recursive indicators (e.g. SuperTrend, RSI, ATR) set this to 50–200 bars.
+        /// Default is 0.
+        /// </summary>
+        public int WarmupBars { get; set; }
+
+        /// <summary>
         /// Gets or sets additional rendering features such as bound lines, zero line,
         /// histogram colors, and fill regions between buffers.
         /// </summary>
@@ -327,6 +434,33 @@ namespace Pt.Okx.Sdk.Indicators.Models
             Window = window;
             Buffers = buffers;
             Plots = plots;
+        }
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorProperty"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorProperty"/> instance with all nested labels, special features, and settings cloned.</returns>
+        public IndicatorProperty DeepCopy()
+        {
+            var newLabels = new Dictionary<int, IndicatorLabel>();
+            if (Labels != null)
+            {
+                foreach (var kvp in Labels)
+                {
+                    newLabels[kvp.Key] = kvp.Value.DeepCopy();
+                }
+            }
+
+            return new IndicatorProperty(Name, Window, Buffers, Plots)
+            {
+                IsVisible = IsVisible,
+                IsInternal = IsInternal,
+                VisibleTimeframes = VisibleTimeframes,
+                CalculationMode = CalculationMode,
+                WarmupBars = WarmupBars,
+                Labels = newLabels,
+                SpecialFeatures = SpecialFeatures?.DeepCopy() ?? new IndicatorSpecialFeatures()
+            };
         }
     }
 }

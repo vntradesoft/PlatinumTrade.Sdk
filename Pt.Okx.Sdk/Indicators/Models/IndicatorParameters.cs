@@ -74,5 +74,19 @@ namespace Pt.Okx.Sdk.Indicators.Models
         /// <returns>A new dictionary containing the current key-value pairs.</returns>
         public IReadOnlyDictionary<string, object?> All =>
        new Dictionary<string, object?>(_parameters);
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorParameters"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorParameters"/> instance containing identical parameter entries.</returns>
+        public IndicatorParameters DeepCopy()
+        {
+            var copy = new IndicatorParameters();
+            foreach (var kvp in _parameters)
+            {
+                copy._parameters[kvp.Key] = kvp.Value;
+            }
+            return copy;
+        }
     }
 }

@@ -30,6 +30,6 @@ namespace Pt.Okx.Sdk.Enums
         MarketMakerProtectionPostOnly,
 
         /// <summary>Easy liquidity provider order.</summary>
-        Elp
+        Rpi
     }
 }

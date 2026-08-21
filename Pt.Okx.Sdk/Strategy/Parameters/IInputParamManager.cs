@@ -36,11 +36,21 @@ namespace Pt.Okx.Sdk.Strategy.Parameters
         /// <param name="filePath">The path to the parameter file.</param>
         void LoadFromFile(string filePath);
 
-        /// <summary>
-        /// Saves parameters to a file.
-        /// </summary>
+        /// <summary>Saves parameters to a file.</summary>
         /// <param name="filePath">The path to the output file.</param>
         void SaveToFile(string filePath);
+
+        /// <summary>
+        /// Serializes all current parameters (schema + values) to a compact JSON string.
+        /// Use with <see cref="ImportFromJson"/> to transfer state to a child process.
+        /// </summary>
+        string ExportToJson();
+
+        /// <summary>
+        /// Restores parameters from a JSON string previously produced by <see cref="ExportToJson"/>.
+        /// Replaces current parameters entirely.
+        /// </summary>
+        void ImportFromJson(string json);
 
         /// <summary>
         /// Gets the value of a parameter with the specified key.

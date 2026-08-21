@@ -173,7 +173,6 @@ public class MyStrategyPlugin : IStrategyPlugin, IStrategyPluginMetadata
 {
     public string Name => "My Momentum Strategy";
     public string PluginVersion => "1.0.0";
-    public string RequiredSdkVersion => "1.0";
 
     public void Register(IServiceCollection services)
     {
@@ -273,7 +272,6 @@ public class MyIndicatorPlugin : IIndicatorPlugin
 {
     public string Name => "My Trading Indicators";
     public string PluginVersion => "1.0.0";
-    public string RequiredSdkVersion => "1.0.0";
     public string Description => "Contains simple ROC indicators.";
 
     public void RegisterIndicators(IIndicatorRegistrationContext context)
@@ -292,6 +290,10 @@ public class MyIndicatorPlugin : IIndicatorPlugin
     }
 }
 ```
+
+Compatibility note: plugin developers do not declare SDK compatibility in metadata.
+The host reads the Pt.Okx.Sdk assembly version referenced by the plugin at compile time
+and validates it against host `SdkContract` rules.
 
 ---
 

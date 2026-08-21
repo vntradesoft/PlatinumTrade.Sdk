@@ -40,6 +40,21 @@ namespace Pt.Okx.Sdk.Indicators.Models
             var tf = TimeFrame.HasValue ? $":{TimeFrame}" : "";
             return IndicatorId != null ? $"Ind:{IndicatorId}{tf}[{BufferIndex}]" : $"Price:{AppliedPrice}";
         }
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorSource"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorSource"/> instance with cloned values.</returns>
+        public IndicatorSource DeepCopy()
+        {
+            return new IndicatorSource
+            {
+                IndicatorId = IndicatorId,
+                TimeFrame = TimeFrame,
+                BufferIndex = BufferIndex,
+                AppliedPrice = AppliedPrice
+            };
+        }
     }
 
     /// <summary>
@@ -60,9 +75,9 @@ namespace Pt.Okx.Sdk.Indicators.Models
         public string Symbol { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Gets the timeframe in which the indicator is calculated.
+        /// Gets or sets the timeframe in which the indicator is calculated.
         /// </summary>
-        public Timeframe TimeFrame { get; private set; }
+        public Timeframe TimeFrame { get; set; }
 
         /// <summary>
         /// Gets the indicator type.
@@ -145,6 +160,18 @@ namespace Pt.Okx.Sdk.Indicators.Models
         }
 
         /// <summary>
+        /// Adds a prepared <see cref="IndicatorSource"/> instance to the source list.
+        /// </summary>
+        /// <param name="source">The source instance to add.</param>
+        /// <returns>The current configuration instance.</returns>
+        public IndicatorConfig AddSource(IndicatorSource source)
+        {
+            ArgumentNullException.ThrowIfNull(source);
+            _sources.Add(source);
+            return this;
+        }
+
+        /// <summary>
         /// Gets the first source for backward compatibility with single-source usage.
         /// If no sources are defined, a default source instance is returned.
         /// </summary>
@@ -163,6 +190,26 @@ namespace Pt.Okx.Sdk.Indicators.Models
             var sourcesKey = string.Join("+", Sources.Select(s => s.ToString()));
             var customPart = CustomName != null ? $"|Custom:{CustomName}" : "";
             return $"{Symbol}|{TimeFrame}|{IndicatorType}{customPart}|{sourcesKey}|{Parameters.GetParametersHash()}";
+        }
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorConfig"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorConfig"/> instance with cloned parameters and sources.</returns>
+        public IndicatorConfig DeepCopy()
+        {
+            var copy = new IndicatorConfig(Symbol, TimeFrame, IndicatorType)
+            {
+                CustomName = CustomName,
+                Parameters = Parameters?.DeepCopy() ?? new IndicatorParameters()
+            };
+
+            foreach (var source in _sources)
+            {
+                copy._sources.Add(source.DeepCopy());
+            }
+
+            return copy;
         }
     }
 }

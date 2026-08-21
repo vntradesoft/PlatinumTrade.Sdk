@@ -1,3 +1,4 @@
+using Pt.Okx.Sdk.Enums;
 using Pt.Okx.Sdk.Indicators.Base;
 
 namespace Pt.Okx.Sdk.Indicators.Plugin
@@ -51,11 +52,11 @@ namespace Pt.Okx.Sdk.Indicators.Plugin
         /// <summary>Plugin display name, for example "My Custom Indicators".</summary>
         string Name { get; }
 
-        /// <summary>Plugin version, for example "1.0.0".</summary>
-        string PluginVersion { get; }
-
-        /// <summary>Required SDK version for compatibility, for example "1.0.0".</summary>
-        string RequiredSdkVersion { get; }
+        /// <summary>
+        /// Plugin version, for example "1.0.0". Return <c>null</c> to let host infer display
+        /// version from assembly informational/version attributes.
+        /// </summary>
+        string? PluginVersion { get; }
 
         /// <summary>Short plugin description.</summary>
         string Description { get; }
@@ -113,7 +114,7 @@ namespace Pt.Okx.Sdk.Indicators.Plugin
         /// </summary>
         /// <param name="dllPath">The path to the plugin DLL.</param>
         /// <returns><c>true</c> if successfully unloaded; otherwise, <c>false</c>.</returns>
-        bool UnloadPlugin(string dllPath);
+        UnloadPluginResult UnloadPlugin(string dllPath);
 
         /// <summary>
         /// Verifies whether a DLL is a valid, compatible indicator plugin.

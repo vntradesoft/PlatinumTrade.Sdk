@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Pt.Okx.Sdk.Strategy;
 using Pt.Okx.Sdk.Strategy.Parameters;
 using Pt.Okx.Sdk.Strategy.Plugin;
@@ -12,8 +13,9 @@ namespace MyCompany.MyStrategy
         public string Version => "1.0.0";
         public string Author => "MyCompany";
         public string Description => "A boilerplate trading strategy.";
-        public Microsoft.Extensions.Logging.LogLevel FileLogLevel => Microsoft.Extensions.Logging.LogLevel.Debug;
-        public Microsoft.Extensions.Logging.LogLevel ConsoleLogLevel => Microsoft.Extensions.Logging.LogLevel.Information;
+        public LogLevel FileLogLevel => LogLevel.Debug;
+        public LogLevel ConsoleLogLevel => LogLevel.Information;
+        public string? PluginVersion => null;
 
         public Type GetInputSchemaType() => typeof(MyStrategyInput);
 
@@ -25,7 +27,7 @@ namespace MyCompany.MyStrategy
                 return manager.BindSchema<MyStrategyInput>();
             });
 
-            services.AddSingleton<StrategyBase, MyStrategyImpl>();
+            services.AddSingleton<IStrategy, MyStrategyImpl>();
         }
 
         public void RegisterForBacktest(IServiceCollection services)
@@ -36,7 +38,7 @@ namespace MyCompany.MyStrategy
                 return manager.BindSchema<MyStrategyInput>();
             });
 
-            services.AddTransient<StrategyBase, MyStrategyImpl>();
+            services.AddTransient<IStrategy, MyStrategyImpl>();
         }
     }
 }

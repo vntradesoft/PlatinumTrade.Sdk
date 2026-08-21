@@ -6,8 +6,9 @@ namespace Pt.Okx.Sdk.Strategy.Plugin
     /// Provides metadata information for a strategy plugin.
     /// </summary>
     /// <remarks>
-    /// This interface defines basic identification and compatibility information,
+    /// This interface defines basic identification information,
     /// as well as optional logging behavior preferences used by the host system.
+    /// SDK compatibility is resolved by the host from the referenced Pt.Okx.Sdk assembly version.
     /// </remarks>
     public interface IStrategyPluginMetadata
     {
@@ -17,14 +18,10 @@ namespace Pt.Okx.Sdk.Strategy.Plugin
         string Name { get; }
 
         /// <summary>
-        /// Gets the version of the plugin.
+        /// Gets the version of the plugin. Return <c>null</c> to let host infer display
+        /// version from assembly informational/version attributes.
         /// </summary>
-        string PluginVersion { get; }
-
-        /// <summary>
-        /// Gets the minimum required SDK version for compatibility.
-        /// </summary>
-        string RequiredSdkVersion { get; }
+        string? PluginVersion { get; }
 
         /// <summary>
         /// Gets the author of the plugin. Return <c>null</c> if not specified.

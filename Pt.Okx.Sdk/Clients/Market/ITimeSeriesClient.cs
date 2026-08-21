@@ -701,7 +701,7 @@ namespace Pt.Okx.Sdk.Clients.Market
         /// </summary>
         /// <param name="symbol">Trading symbol. Defaults to the current symbol.</param>
         /// <param name="timeframe">Timeframe. Defaults to the current timeframe.</param>
-        /// <param name="period">ATR period used by SuperTrend. Default: 10.</param>
+        /// <param name="period">ATR period used by SuperTrend. Default: 14.</param>
         /// <param name="multiplier">ATR multiplier. Default: 3.0.</param>
         /// <param name="indicatorAlias">Optional indicator alias.</param>
         /// <param name="propertyOptions">Optional property configuration.</param>

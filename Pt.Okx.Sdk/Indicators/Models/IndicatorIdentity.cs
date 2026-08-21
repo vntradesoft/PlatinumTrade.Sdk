@@ -51,5 +51,20 @@ namespace Pt.Okx.Sdk.Indicators.Models
             var paramsStr = paramsList.Length > 0 ? $"({string.Join(",", paramsList)})" : "";
             return $"{IndicatorType}{paramsStr}@{Symbol}_{TimeFrame}";
         }
+
+        /// <summary>
+        /// Creates a deep copy of this <see cref="IndicatorIdentity"/> instance.
+        /// </summary>
+        /// <returns>A new <see cref="IndicatorIdentity"/> instance with cloned parameters.</returns>
+        public IndicatorIdentity DeepCopy()
+        {
+            return new IndicatorIdentity
+            {
+                Symbol = Symbol,
+                TimeFrame = TimeFrame,
+                IndicatorType = IndicatorType,
+                Parameters = Parameters?.DeepCopy() ?? new IndicatorParameters()
+            };
+        }
     }
 }

@@ -10,8 +10,6 @@ public sealed class UpTrendExamplePlugin : IStrategyPlugin, IStrategyPluginMetad
 
     public string PluginVersion => "1.0.0";
 
-    public string RequiredSdkVersion => "1.0";
-
     public string Author => "PlatinumTrade Team";
 
     public string Description => "Simple SuperTrend strategy example: market entry on bullish reversal, close on bearish reversal.";

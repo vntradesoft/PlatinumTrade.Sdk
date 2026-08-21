@@ -11,7 +11,6 @@ namespace Pt.Examples.Indicator
         // Metadata
         public string Name => "Okx Indicator Examples";
         public string PluginVersion => "1.0.0";
-        public string RequiredSdkVersion => "1.0.0";
         public string Description => "MA Crossover + Momentum (ROC) + ExRSI (SpecialFeatures demo) example indicators";
         public string Author => "PlatinumTrade Team";
 
