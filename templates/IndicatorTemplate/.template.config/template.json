@@ -1,4 +1,4 @@
-{
+﻿{
     "$schema": "http://json.schemastore.org/template",
     "author": "PlatinumTrade",
     "classifications": ["PlatinumTrade", "Indicator"],
@@ -9,5 +9,28 @@
         "language": "C#",
         "type": "project"
     },
-    "sourceName": "MyIndicator"
+    "sourceName": "MyIndicator",
+    "preferNameDirectory": true,
+    "defaultName": "MyIndicator",
+    "symbols": {
+        "sdkVersion": {
+            "type": "parameter",
+            "datatype": "text",
+            "description": "Version of the Pt.Okx.Sdk NuGet package to pin in the generated project.",
+            "defaultValue": "0.12.0-beta.1",
+            "replaces": "SDK_VERSION_PLACEHOLDER"
+        },
+        "targetFramework": {
+            "type": "parameter",
+            "datatype": "text",
+            "description": "Target framework moniker for the generated indicator project.",
+            "defaultValue": "0.12.0-beta.1",
+            "replaces": "TARGET_FRAMEWORK_PLACEHOLDER"
+        }
+    },
+    "primaryOutputs": [
+        {
+            "path": "MyIndicator.csproj"
+        }
+    ]
 }

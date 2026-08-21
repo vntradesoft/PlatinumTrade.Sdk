@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>TARGET_FRAMEWORK_PLACEHOLDER</TargetFramework>
@@ -15,7 +15,7 @@
     <!--#if (useProjectReference) -->
     <ProjectReference Include="..\..\Pt.Okx.Sdk\Pt.Okx.Sdk.csproj" />
     <!--#else -->
-    <PackageReference Include="Pt.Okx.Sdk" Version="SDK_VERSION_PLACEHOLDER" />
+    <PackageReference Include="Pt.Okx.Sdk" Version="0.12.0-beta.1" />
     <!--#endif -->
   </ItemGroup>
 
