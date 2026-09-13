@@ -377,34 +377,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Changelog
 
-### [0.9.3-beta.2] - 2026-07-08
+For detailed release notes, API changes, and version history, see:
+- 📖 [SDK Document History](https://vntradesoft.github.io/PlatinumTrade.Docs/vi/docs/sdk/sdk-document-history)
 
-#### Features
-
-- **sdk:** Sync with App version and upgrade JK.OKX.Net to 5.0.2 (Breaking Change).
-
-### [0.9.0-beta.4] - 2026-07-08
-
-#### Features
-
-- **sdk:** Sync with App version.
-
-### [0.9.0-beta.3] - 2026-07-08
-
-#### Features
-
-- **sdk:** Add dotnet project templates for strategy and indicator.
-
-### [0.9.0-beta.2] - 2026-07-06
-
-#### Features
-
-- **sdk:** Update abstractions for strategy engine, plugins, indicators, and backtest.
-
-### [0.9.0-beta.1] - 2026-07-05
-
-#### Features
-
-- **sdk:** Initial Beta Release.
-  - Public contract surface for plugin development.
-  - Initial `Pt.Okx.Sdk` NuGet package release.
