@@ -15,7 +15,7 @@
     <!--#if (useProjectReference) -->
     <ProjectReference Include="..\..\Pt.Okx.Sdk\Pt.Okx.Sdk.csproj" />
     <!--#else -->
-    <PackageReference Include="Pt.Okx.Sdk" Version="0.12.0-beta.1" />
+    <PackageReference Include="Pt.Okx.Sdk" Version="0.12.0-beta.2" />
     <!--#endif -->
   </ItemGroup>
 
