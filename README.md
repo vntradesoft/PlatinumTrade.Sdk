@@ -378,5 +378,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## Changelog
 
 For detailed release notes, API changes, and version history, see:
-- 📖 [SDK Document History](https://vntradesoft.github.io/PlatinumTrade.Docs/vi/docs/sdk/sdk-document-history)
+- 📖 [SDK Document History](https://vntradesoft.github.io/PlatinumTrade.Docs/docs/sdk/sdk-document-history/)
 
