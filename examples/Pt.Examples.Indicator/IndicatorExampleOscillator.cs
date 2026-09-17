@@ -17,12 +17,12 @@ namespace Pt.Examples.Indicator
     /// When users open the Edit dialog for this indicator, the Advanced tab should
     /// automatically display "Bound Lines" and "Bound Fill" sections.
     /// </summary>
-    public class CalcIndExampleOscillator : IndicatorBase
+    public class IndicatorExampleOscillator : IndicatorBase
     {
         private IIndicatorBuffer _rsiBuffer = null!;
         private int _period;
 
-        public CalcIndExampleOscillator(
+        public IndicatorExampleOscillator(
             IIndicatorFactory factory,
             IIndicatorManager manager,
             IndicatorConfig config,

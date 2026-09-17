@@ -1,4 +1,4 @@
-﻿using Pt.Okx.Abstractions.Indicators.Plugin;
+using Pt.Okx.Abstractions.Indicators.Plugin;
 
 namespace Pt.Examples.Indicator
 {
@@ -27,7 +27,7 @@ namespace Pt.Examples.Indicator
                         config.SetParam("FastPeriod", null, 10);
                     if (!config.Parameters.Contains("SlowPeriod"))
                         config.SetParam("SlowPeriod", null, 20);
-                    return new CalcIndMACrossover(factory, manager, config, options);
+                    return new IndicatorMACrossover(factory, manager, config, options);
                 },
                 [
                     new IndicatorParameterInfo("FastPeriod", "Fast Period", typeof(int), 10, MinValue: 1, MaxValue: 500),
@@ -41,21 +41,21 @@ namespace Pt.Examples.Indicator
                 {
                     if (!config.Parameters.Contains("Period"))
                         config.SetParam("Period", null, 14);
-                    return new CalcIndMomentum(factory, manager, config, options);
+                    return new IndicatorMomentum(factory, manager, config, options);
                 },
                 [
                     new IndicatorParameterInfo("Period", "Period", typeof(int), 14, MinValue: 1, MaxValue: 500),
                 ]);
 
-            // ExRSI — demo indicator with full SpecialFeatures (bound lines + BoundFill)
-            // Dùng để kiểm tra tab Advanced của CustomIndicatorDialog hiển thị đúng
+            // ExRSI � demo indicator with full SpecialFeatures (bound lines + BoundFill)
+            // D�ng �? ki?m tra tab Advanced c?a CustomIndicatorDialog hi?n th? ��ng
             context.Register(
                 "ExRSI",
                 (factory, manager, config, options) =>
                 {
                     if (!config.Parameters.Contains("Period"))
                         config.SetParam("Period", null, 14);
-                    return new CalcIndExampleOscillator(factory, manager, config, options);
+                    return new IndicatorExampleOscillator(factory, manager, config, options);
                 },
                 [
                     new IndicatorParameterInfo("Period", "Period", typeof(int), 14, MinValue: 2, MaxValue: 500),

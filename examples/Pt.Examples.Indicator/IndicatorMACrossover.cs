@@ -24,7 +24,7 @@ namespace Pt.Examples.Indicator
     /// Double MA Crossover that displays two MA lines (Fast/Slow) on the main chart
     /// and colors them based on crossover direction (Fast > Slow = green, otherwise red).
     /// </summary>
-    public class CalcIndMACrossover : IndicatorBase, IIndicatorMaCrossover
+    public class IndicatorMACrossover : IndicatorBase, IIndicatorMaCrossover
     {
         private IIndicatorBuffer? _fastBuffer;
         private IIndicatorBuffer? _slowBuffer;
@@ -33,7 +33,7 @@ namespace Pt.Examples.Indicator
         private int _fastPeriod;
         private int _slowPeriod;
 
-        public CalcIndMACrossover(
+        public IndicatorMACrossover(
             IIndicatorFactory factory,
             IIndicatorManager manager,
             IndicatorConfig config,

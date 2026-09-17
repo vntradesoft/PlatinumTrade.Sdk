@@ -32,13 +32,13 @@ namespace Pt.Examples.Indicator
     ///
     /// Formula: ROC = ((Close - Close[N]) / Close[N]) * 100
     /// </summary>
-    public class CalcIndMomentum : IndicatorBase, IIndicatorMomentum
+    public class IndicatorMomentum : IndicatorBase, IIndicatorMomentum
     {
         private IIndicatorBuffer? _rocBuffer;
 
         private int _period;
 
-        public CalcIndMomentum(
+        public IndicatorMomentum(
             IIndicatorFactory factory,
             IIndicatorManager manager,
             IndicatorConfig config,
