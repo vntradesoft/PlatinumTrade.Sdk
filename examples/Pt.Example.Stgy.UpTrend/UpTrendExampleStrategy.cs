@@ -1,6 +1,10 @@
-using Microsoft.Extensions.Options;
-using Pt.Okx.Sdk.Strategy.Events;
-using Pt.Okx.Sdk.Strategy.Settings;
+﻿using Microsoft.Extensions.Options;
+using Pt.Okx.Abstractions.Clients;
+using Pt.Okx.Abstractions.Indicators.BuiltIn;
+using Pt.Okx.Abstractions.Strategy;
+using Pt.Okx.Sdk.Strategy;
+using Pt.Okx.Shared.Strategy.Events;
+using Pt.Okx.Shared.Strategy.Settings;
 
 namespace Pt.Example.Stgy.UpTrend;
 
@@ -218,21 +222,21 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
         return null;
     }
 
-    public override Task OnOrderAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.Order> orders, CancellationToken ct)
+    public override Task OnOrderAsync(IReadOnlyList<Pt.Okx.Shared.Clients.Trading.Models.Order> orders, CancellationToken ct)
     {
         _ = ct;
         _ = orders;
         return Task.CompletedTask;
     }
 
-    public override Task OnAlgoOrderAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.AlgoOrder> algoOrders, CancellationToken ct)
+    public override Task OnAlgoOrderAsync(IReadOnlyList<Pt.Okx.Shared.Clients.Trading.Models.AlgoOrder> algoOrders, CancellationToken ct)
     {
         _ = ct;
         _ = algoOrders;
         return Task.CompletedTask;
     }
 
-    public override Task OnPositionAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.Position> positions, CancellationToken ct)
+    public override Task OnPositionAsync(IReadOnlyList<Pt.Okx.Shared.Clients.Trading.Models.Position> positions, CancellationToken ct)
     {
         _ = ct;
 
@@ -247,21 +251,21 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
         return Task.CompletedTask;
     }
 
-    public override Task OnTransactionAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Trading.Models.Transaction> transactions, CancellationToken ct)
+    public override Task OnTransactionAsync(IReadOnlyList<Pt.Okx.Shared.Clients.Trading.Models.Transaction> transactions, CancellationToken ct)
     {
         _ = ct;
         _ = transactions;
         return Task.CompletedTask;
     }
 
-    public override Task OnBalanceAsync(IReadOnlyList<Pt.Okx.Sdk.Clients.Account.Model.AccountBalance> balances, CancellationToken ct)
+    public override Task OnBalanceAsync(IReadOnlyList<Pt.Okx.Shared.Clients.Account.Model.AccountBalance> balances, CancellationToken ct)
     {
         _ = ct;
         _ = balances;
         return Task.CompletedTask;
     }
 
-    public override Task OnTradeCommandAsync(Pt.Okx.Sdk.Notifier.Models.TradeCommand tradeCommand, CancellationToken ct)
+    public override Task OnTradeCommandAsync(Pt.Okx.Shared.Notifier.Models.TradeCommand tradeCommand, CancellationToken ct)
     {
         _ = ct;
         _ = tradeCommand;
@@ -333,7 +337,7 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
         _logger.LogWarning("Exit", "ClosePositionAsync failed: {0}", result.Error);
     }
 
-    private static bool IsAlreadyClosedPositionError(Pt.Okx.Sdk.Common.ApiError? error)
+    private static bool IsAlreadyClosedPositionError(Pt.Okx.Shared.Common.ApiError? error)
     {
         if (error is null)
         {
@@ -346,17 +350,17 @@ internal sealed class UpTrendExampleStrategy : StrategyBase
             || message.Contains("position doesn't exist", StringComparison.OrdinalIgnoreCase);
     }
 
-    private bool IsOpenPositionForCurrentSymbol(Pt.Okx.Sdk.Clients.Trading.Models.Position position)
+    private bool IsOpenPositionForCurrentSymbol(Pt.Okx.Shared.Clients.Trading.Models.Position position)
     {
         return string.Equals(position.Symbol, SymbolCurrent, StringComparison.OrdinalIgnoreCase)
             && Math.Abs(position.PositionsQuantity ?? 0m) > 0.00000001m;
     }
 
-    private bool IsActiveOrderForCurrentSymbol(Pt.Okx.Sdk.Clients.Trading.Models.Order order)
+    private bool IsActiveOrderForCurrentSymbol(Pt.Okx.Shared.Clients.Trading.Models.Order order)
     {
         return string.Equals(order.Symbol, SymbolCurrent, StringComparison.OrdinalIgnoreCase)
-            && (order.OrderState == Pt.Okx.Sdk.Clients.Trading.Enums.OrderStatus.Live
-                || order.OrderState == Pt.Okx.Sdk.Clients.Trading.Enums.OrderStatus.PartiallyFilled);
+            && (order.OrderState == Pt.Okx.Shared.Clients.Trading.Enums.OrderStatus.Live
+                || order.OrderState == Pt.Okx.Shared.Clients.Trading.Enums.OrderStatus.PartiallyFilled);
     }
 
     private decimal GetNormalizedMarketQuantity()

@@ -1,12 +1,12 @@
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using Pt.Okx.Sdk.Clients;
-using Pt.Okx.Sdk.Enums;
-using Pt.Okx.Sdk.Indicators.Enums;
-using Pt.Okx.Sdk.Strategy;
-using Pt.Okx.Sdk.Strategy.Events;
-using Pt.Okx.Sdk.Strategy.Settings;
+using Pt.Okx.Abstractions.Clients;
+using Pt.Okx.Shared.Enums;
+using Pt.Okx.Shared.Indicators.Enums;
+using Pt.Okx.Abstractions.Strategy;
+using Pt.Okx.Shared.Strategy.Events;
+using Pt.Okx.Shared.Strategy.Settings;
 
 namespace MyCompany.MyStrategy
 {

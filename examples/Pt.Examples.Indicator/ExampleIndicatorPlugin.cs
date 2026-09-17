@@ -1,4 +1,4 @@
-using Pt.Okx.Sdk.Indicators.Plugin;
+﻿using Pt.Okx.Abstractions.Indicators.Plugin;
 
 namespace Pt.Examples.Indicator
 {

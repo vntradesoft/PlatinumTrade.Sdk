@@ -1,4 +1,4 @@
-using Pt.Okx.Sdk.Strategy.Parameters;
+﻿using Pt.Okx.Abstractions.Strategy.Parameters;
 
 namespace Pt.Example.Stgy.UpTrend;
 

@@ -28,27 +28,27 @@
             "type": "parameter",
             "datatype": "text",
             "description": "Version of the Pt.Okx.Sdk NuGet package to pin in the generated project. Must be compatible with the host app.",
-            "defaultValue": "0.12.0-beta.2",
+            "defaultValue": "0.13.0-beta.1",
             "replaces": "SDK_VERSION_PLACEHOLDER"
         },
         "targetFramework": {
             "type": "parameter",
             "datatype": "text",
             "description": "Target framework moniker for the generated strategy project.",
-            "defaultValue": "0.12.0-beta.2",
+            "defaultValue": "0.13.0-beta.1",
             "replaces": "TARGET_FRAMEWORK_PLACEHOLDER"
         },
         "useProjectReference": {
             "type": "parameter",
             "datatype": "bool",
             "description": "Reference Pt.Okx.Sdk via a local ProjectReference (internal solution dev) instead of the NuGet PackageReference (external dev). Default is false = NuGet package.",
-            "defaultValue": "0.12.0-beta.2"
+            "defaultValue": "0.13.0-beta.1"
         },
         "skipRestore": {
             "type": "parameter",
             "datatype": "bool",
             "description": "If specified, skips the automatic 'dotnet restore' on create.",
-            "defaultValue": "0.12.0-beta.2"
+            "defaultValue": "0.13.0-beta.1"
         }
     },
     "primaryOutputs": [

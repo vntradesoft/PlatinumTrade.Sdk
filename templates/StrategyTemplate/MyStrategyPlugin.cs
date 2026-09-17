@@ -1,8 +1,8 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Pt.Okx.Sdk.Strategy;
-using Pt.Okx.Sdk.Strategy.Parameters;
-using Pt.Okx.Sdk.Strategy.Plugin;
+using Pt.Okx.Abstractions.Strategy;
+using Pt.Okx.Abstractions.Strategy.Parameters;
+using Pt.Okx.Abstractions.Strategy.Plugin;
 using System;
 
 namespace MyCompany.MyStrategy

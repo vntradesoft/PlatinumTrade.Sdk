@@ -193,10 +193,10 @@ public class MyStrategyPlugin : IStrategyPlugin, IStrategyPluginMetadata
 To build a custom indicator, inherit from `CalcIndBase` and implement `OnCalculate`:
 
 ```csharp
-using Pt.Okx.Sdk.Indicators.Base;
-using Pt.Okx.Sdk.Indicators.Enums;
-using Pt.Okx.Sdk.Indicators.Models;
-using Pt.Okx.Sdk.Indicators.Services;
+using Pt.Okx.Sdk.Indicators;
+using Pt.Okx.Shared.Indicators.Enums;
+using Pt.Okx.Shared.Indicators.Models;
+using Pt.Okx.Abstractions.Indicators.Services;
 
 public class SimpleMomentumIndicator : CalcIndBase
 {

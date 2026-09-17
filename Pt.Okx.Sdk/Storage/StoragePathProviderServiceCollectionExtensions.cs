@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Pt.Okx.Abstractions.Storage;
 
 namespace Pt.Okx.Sdk.Storage
 {

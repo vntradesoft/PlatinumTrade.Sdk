@@ -1,4 +1,4 @@
-global using Pt.Okx.Sdk.Clients;
-global using Pt.Okx.Sdk.Enums;
-global using Pt.Okx.Sdk.Indicators.BuiltIn;
-global using Pt.Okx.Sdk.Strategy;
+﻿global using Pt.Okx.Abstractions.Clients;
+global using Pt.Okx.Shared.Enums;
+global using Pt.Okx.Abstractions.Indicators.BuiltIn;
+global using Pt.Okx.Abstractions.Strategy;

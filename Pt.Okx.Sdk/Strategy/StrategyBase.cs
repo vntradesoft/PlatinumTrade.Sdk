@@ -1,7 +1,8 @@
-using Pt.Okx.Sdk.Clients.Account.Model;
-using Pt.Okx.Sdk.Clients.Trading.Models;
-using Pt.Okx.Sdk.Notifier.Models;
-using Pt.Okx.Sdk.Strategy.Events;
+using Pt.Okx.Shared.Clients.Account.Model;
+using Pt.Okx.Shared.Clients.Trading.Models;
+using Pt.Okx.Shared.Notifier.Models;
+using Pt.Okx.Shared.Strategy.Events;
+using Pt.Okx.Abstractions.Strategy;
 
 namespace Pt.Okx.Sdk.Strategy
 {

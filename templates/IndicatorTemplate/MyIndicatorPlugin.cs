@@ -1,5 +1,5 @@
-using Pt.Okx.Sdk.Indicators;
-using Pt.Okx.Sdk.Strategy.Parameters;
+﻿using Pt.Okx.Abstractions.Indicators;
+using Pt.Okx.Abstractions.Strategy.Parameters;
 
 namespace MyCompany.MyIndicator
 {

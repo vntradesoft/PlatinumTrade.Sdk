@@ -1,6 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
-using Pt.Okx.Sdk.Strategy.Parameters;
-using Pt.Okx.Sdk.Strategy.Plugin;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Pt.Okx.Abstractions.Strategy.Parameters;
+using Pt.Okx.Abstractions.Strategy.Plugin;
 
 namespace Pt.Example.Stgy.UpTrend;
 

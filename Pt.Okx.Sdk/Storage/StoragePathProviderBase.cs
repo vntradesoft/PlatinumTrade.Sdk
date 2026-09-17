@@ -1,4 +1,5 @@
-using Pt.Okx.Sdk.Storage.Enums;
+using Pt.Okx.Shared.Storage.Enums;
+using Pt.Okx.Abstractions.Storage;
 
 namespace Pt.Okx.Sdk.Storage
 {
