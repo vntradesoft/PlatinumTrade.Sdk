@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Pt.Okx.Sdk\Pt.Okx.Sdk.csproj" />
+    <ProjectReference Include="..\..\src\Pt.Okx.Sdk\Pt.Okx.Sdk.csproj" />
   </ItemGroup>
 
 </Project>
