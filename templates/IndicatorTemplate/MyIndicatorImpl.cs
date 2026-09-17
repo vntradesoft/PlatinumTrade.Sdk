@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Pt.Okx.Abstractions.Indicators.Base;
 using Pt.Okx.Shared.Indicators.Models;
@@ -6,7 +6,7 @@ using Pt.Okx.Abstractions.Indicators.Services;
 
 namespace MyCompany.MyIndicator
 {
-    public class MyIndicatorImpl : CalcIndBase
+    public class MyIndicatorImpl : IndicatorBase
     {
         private IIndicatorBuffer _mainBuffer;
 

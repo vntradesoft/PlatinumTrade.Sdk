@@ -1,4 +1,4 @@
-﻿using Pt.Okx.Abstractions.Indicators.Base;
+using Pt.Okx.Abstractions.Indicators.Base;
 using Pt.Okx.Shared.Indicators.Enums;
 using Pt.Okx.Shared.Indicators.Models;
 using Pt.Okx.Abstractions.Indicators.Services;
@@ -32,7 +32,7 @@ namespace Pt.Examples.Indicator
     ///
     /// Formula: ROC = ((Close - Close[N]) / Close[N]) * 100
     /// </summary>
-    public class CalcIndMomentum : CalcIndBase, IIndicatorMomentum
+    public class CalcIndMomentum : IndicatorBase, IIndicatorMomentum
     {
         private IIndicatorBuffer? _rocBuffer;
 

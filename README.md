@@ -52,7 +52,7 @@ All within a unified ecosystem designed for professional traders and developers.
 
 ## Features
 
-- **Indicator Plugin**: Extensible base classes (`CalcIndBase`) and services to design custom indicator plugins.
+- **Indicator Plugin**: Extensible base classes (`IndicatorBase`) and services to design custom indicator plugins.
 - **Strategy Plugin**: Standardized interfaces for strategy plugins, settings, parameters, runtime telemetry, and interaction with the trading exchange.
 - **Backtest and Realtime Support**: Created plugins can be used in both backtest and realtime trading workflows.
 - **Notification Support**: Built-in hooks for sending runtime notifications and strategy messages.
@@ -190,7 +190,7 @@ public class MyStrategyPlugin : IStrategyPlugin, IStrategyPluginMetadata
 
 ### 2. Creating a Custom Indicator
 
-To build a custom indicator, inherit from `CalcIndBase` and implement `OnCalculate`:
+To build a custom indicator, inherit from `IndicatorBase` and implement `OnCalculate`:
 
 ```csharp
 using Pt.Okx.Sdk.Indicators;
@@ -198,7 +198,7 @@ using Pt.Okx.Shared.Indicators.Enums;
 using Pt.Okx.Shared.Indicators.Models;
 using Pt.Okx.Abstractions.Indicators.Services;
 
-public class SimpleMomentumIndicator : CalcIndBase
+public class SimpleMomentumIndicator : IndicatorBase
 {
     private IIndicatorBuffer? _rocBuffer;
     private int _period;

@@ -6,14 +6,14 @@ namespace Pt.Okx.Sdk.Indicators
 {
     /// <summary>
     /// Base class for indicator calculators in the SDK.
-    /// Inherits from <see cref="Pt.Okx.Abstractions.Indicators.Base.CalcIndBase"/>.
+    /// Inherits from <see cref="Pt.Okx.Abstractions.Indicators.Base.IndicatorBase"/>.
     /// </summary>
-    public abstract class CalcIndBase : Pt.Okx.Abstractions.Indicators.Base.CalcIndBase
+    public abstract class IndicatorBase : Pt.Okx.Abstractions.Indicators.Base.IndicatorBase
     {
         /// <summary>
         /// Initializes the base calculator with factory, manager, config, and optional property customizations.
         /// </summary>
-        protected CalcIndBase(
+        protected IndicatorBase(
             IIndicatorFactory factory,
             IIndicatorManager manager,
             IndicatorConfig config,

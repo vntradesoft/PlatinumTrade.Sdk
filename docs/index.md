@@ -13,7 +13,7 @@ _layout: landing
 | `Pt.Okx.Sdk.Clients` | Client interfaces: `IOkxClient`, `ITradeClient`, `ITimeSeriesClient`, `IAccountClient`, `IInstrumentClient` |
 | `Pt.Okx.Sdk.Common` | `ApiResult` / `ApiResult<T>` pattern for error handling |
 | `Pt.Okx.Sdk.Enums` | Enums: `Timeframe`, `OrderSide`, `OrderType`, `InstrumentType`, `TradeMode`, ... |
-| `Pt.Okx.Sdk.Indicators` | Indicator base classes (`CalcIndBase`, `IIndicator`, `IIndicatorBuffer`) and plugin interfaces |
+| `Pt.Okx.Sdk.Indicators` | Indicator base classes (`IndicatorBase`, `IIndicator`, `IIndicatorBuffer`) and plugin interfaces |
 | `Pt.Okx.Sdk.Strategy` | Strategy interfaces: `IStrategy`, `IStrategyStateStore`, `IStrategyLogger` |
 | `Pt.Okx.Sdk.Drawing` | Drawing manager interfaces and chart objects |
 | `Pt.Okx.Sdk.Notifier` | Telegram command extension interface |

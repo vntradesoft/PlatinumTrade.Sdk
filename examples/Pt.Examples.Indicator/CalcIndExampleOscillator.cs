@@ -1,4 +1,4 @@
-﻿using Pt.Okx.Abstractions.Indicators.Base;
+using Pt.Okx.Abstractions.Indicators.Base;
 using Pt.Okx.Shared.Indicators.Enums;
 using Pt.Okx.Shared.Indicators.Models;
 using Pt.Okx.Abstractions.Indicators.Services;
@@ -17,7 +17,7 @@ namespace Pt.Examples.Indicator
     /// When users open the Edit dialog for this indicator, the Advanced tab should
     /// automatically display "Bound Lines" and "Bound Fill" sections.
     /// </summary>
-    public class CalcIndExampleOscillator : CalcIndBase
+    public class CalcIndExampleOscillator : IndicatorBase
     {
         private IIndicatorBuffer _rsiBuffer = null!;
         private int _period;

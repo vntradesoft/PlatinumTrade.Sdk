@@ -1,4 +1,4 @@
-﻿using Pt.Okx.Abstractions.Indicators.Base;
+using Pt.Okx.Abstractions.Indicators.Base;
 using Pt.Okx.Shared.Indicators.Enums;
 using Pt.Okx.Shared.Indicators.Models;
 using Pt.Okx.Abstractions.Indicators.Services;
@@ -24,7 +24,7 @@ namespace Pt.Examples.Indicator
     /// Double MA Crossover that displays two MA lines (Fast/Slow) on the main chart
     /// and colors them based on crossover direction (Fast > Slow = green, otherwise red).
     /// </summary>
-    public class CalcIndMACrossover : CalcIndBase, IIndicatorMaCrossover
+    public class CalcIndMACrossover : IndicatorBase, IIndicatorMaCrossover
     {
         private IIndicatorBuffer? _fastBuffer;
         private IIndicatorBuffer? _slowBuffer;
